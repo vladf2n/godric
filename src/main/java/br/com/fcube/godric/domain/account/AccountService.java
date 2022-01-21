@@ -5,6 +5,7 @@ import br.com.fcube.godric.infrastructure.account.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -13,6 +14,7 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
 
+    @Transactional
     public AccountDTO save(AccountDTO accountDTO) {
         Account account = accountRepository.save(accountDTO.toEntity());
         return AccountDTO.from(account);

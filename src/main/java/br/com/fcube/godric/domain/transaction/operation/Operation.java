@@ -1,7 +1,6 @@
 package br.com.fcube.godric.domain.transaction.operation;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +9,9 @@ import javax.persistence.Id;
 
 @Data
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(of = {"id"})
 public class Operation {
 
