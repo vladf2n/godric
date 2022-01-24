@@ -21,6 +21,8 @@ import java.time.Instant;
 @ApiModel(value = "Transaction")
 public class TransactionDTO {
 
+    private final int PAYMENT_OPERATION = 4;
+
     @JsonProperty(access = JsonProperty.Access.READ_ONLY, value = "transaction_id")
     @ApiModelProperty(hidden = true)
     private Integer id;
@@ -48,7 +50,7 @@ public class TransactionDTO {
         return Transaction.builder()
                 .account(Account.builder().id(accountId).build())
                 .operation(Operation.builder().id(operationId).build())
-                .amount(operationId != 4 ? -amount : amount)
+                .amount(operationId != PAYMENT_OPERATION ? -amount : amount)
                 .eventDate(Instant.now())
                 .build();
     }
