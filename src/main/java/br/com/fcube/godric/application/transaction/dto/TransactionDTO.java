@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.time.Instant;
 
 @Data
@@ -21,9 +22,11 @@ public class TransactionDTO {
     private Integer id;
 
     @JsonProperty(value = "account_id")
+    @NotNull(message = "Account cannot be null")
     private Integer accountId;
 
     @JsonProperty(value = "operation_id")
+    @NotNull(message = "Operation cannot be null")
     private Integer operationId;
 
     private Double amount;

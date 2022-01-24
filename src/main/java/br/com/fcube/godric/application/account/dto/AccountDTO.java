@@ -7,6 +7,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -17,6 +23,8 @@ public class AccountDTO {
     private Integer id;
 
     @JsonProperty(value = "document_number")
+    @Size(min = 11, max = 14)
+    @NotBlank(message = "Document Number cannot be null")
     private String documentNumber;
 
     public static AccountDTO from(Account account) {

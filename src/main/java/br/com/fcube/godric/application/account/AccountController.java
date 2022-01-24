@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -18,7 +18,7 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody AccountDTO accountDto) {
+    public ResponseEntity<Void> create(@Valid @RequestBody AccountDTO accountDto) {
         AccountDTO account = accountService.save(accountDto);
         return ResponseEntity.created(URI.create("/accounts/" + account.getId())).build();
     }

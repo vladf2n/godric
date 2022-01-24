@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -19,7 +20,7 @@ public class TransactionController {
     private final TransactionService transactionService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody TransactionDTO transactionDTO) {
+    public ResponseEntity<Void> create(@Valid @RequestBody TransactionDTO transactionDTO) {
         TransactionDTO transaction = transactionService.save(transactionDTO);
         return ResponseEntity.created(URI.create("/transactions/" + transaction.getId())).build();
     }
