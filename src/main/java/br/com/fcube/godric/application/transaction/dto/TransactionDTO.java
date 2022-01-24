@@ -4,6 +4,8 @@ import br.com.fcube.godric.domain.account.Account;
 import br.com.fcube.godric.domain.transaction.Transaction;
 import br.com.fcube.godric.domain.transaction.operation.Operation;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,9 +18,11 @@ import java.time.Instant;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel(value = "Transaction")
 public class TransactionDTO {
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY, value = "transaction_id")
+    @ApiModelProperty(hidden = true)
     private Integer id;
 
     @JsonProperty(value = "account_id")

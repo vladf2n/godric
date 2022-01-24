@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  pgadmin4:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "89:80"
+
+  postgres:
+    container_name: postgres
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_USER: test
+    ports:
+      - "5432:5432"
+
+  db:
+    container_name: db
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - pgadmin4
