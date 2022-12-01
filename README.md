@@ -1,6 +1,6 @@
 # Godric
 
-This application was created to manage Accounts and Transactions.
+This REST application was created to manage Accounts and Transactions.
 
 ### Account Endpoints:
 - To create an account: POST `/accounts`
